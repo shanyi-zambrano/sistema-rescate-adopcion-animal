@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescate y Adopción Animal</title>
+</head>
+<body>
+    <h1>Sistema de Rescate y Adopción Animal</h1>
+    <h2>Registrar animal rescatado</h2>
+
+    <form>
+        <label>Nombre del animal:</label>
+        <input type="text" required>
+        <br><br>
+
+        <label>Especie:</label>
+        <select>
+            <option>Perro</option>
+            <option>Gato</option>
+            <option>Otro</option>
+        </select>
+        <br><br>
+
+        <label>Ubicación:</label>
+        <input type="text" required>
+        <br><br>
+
+        <label>Estado:</label>
+        <select>
+            <option>Rescatado</option>
+            <option>En tratamiento</option>
+            <option>En adopción</option>
+            <option>Adoptado</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Registrar animal</button>
+    </form>
+</body>
+</html>
