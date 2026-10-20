@@ -3,39 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rescate y Adopción Animal</title>
+    <title>Sistema de Rescate y Adopción Animal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f7f4;
+            margin: 0;
+            padding: 25px;
+            color: #263b32;
+        }
+        main {
+            max-width: 850px;
+            margin: auto;
+        }
+        h1, h2 { color: #23734d; }
+        form, .lista {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px #0001;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+        }
+        input, select, button {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            background: #23734d;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th { background: #e0f1e6; }
+        .tabla { overflow-x: auto; }
+    </style>
 </head>
 <body>
-    <h1>Sistema de Rescate y Adopción Animal</h1>
-    <h2>Registrar animal rescatado</h2>
+<main>
+    <h1>🐾 Sistema de Rescate y Adopción Animal</h1>
+    <p>Registro y seguimiento de animales rescatados.</p>
 
-    <form>
-        <label>Nombre del animal:</label>
-        <input type="text" required>
-        <br><br>
+    <form id="formulario">
+        <h2>Registrar animal rescatado</h2>
 
-        <label>Especie:</label>
-        <select>
+        <label for="nombre">Nombre del animal:</label>
+        <input id="nombre" type="text" required>
+
+        <label for="especie">Especie:</label>
+        <select id="especie">
             <option>Perro</option>
             <option>Gato</option>
-            <option>Otro</option>
+            <option>Fauna silvestre</option>
         </select>
-        <br><br>
 
-        <label>Ubicación:</label>
-        <input type="text" required>
-        <br><br>
+        <label for="ubicacion">Ubicación del rescate:</label>
+        <input id="ubicacion" type="text" required>
 
-        <label>Estado:</label>
-        <select>
+        <label for="responsable">Voluntario responsable:</label>
+        <input id="responsable" type="text" required>
+
+        <label for="estado">Estado:</label>
+        <select id="estado">
             <option>Rescatado</option>
             <option>En tratamiento</option>
             <option>En adopción</option>
             <option>Adoptado</option>
         </select>
-        <br><br>
 
         <button type="submit">Registrar animal</button>
     </form>
+
+    <section class="lista">
+        <h2>Animales registrados</h2>
+        <p id="total">Total de animales: 0</p>
+        <div class="tabla">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Especie</th>
+                        <th>Ubicación</th>
+                        <th>Responsable</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="registros"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<script>
+    const formulario = document.getElementById("formulario");
+    const registros = document.getElementById("registros");
+    const total = document.getElementById("total");
+
+    let animales = JSON.parse(
+        localStorage.getItem("animalesRescatados") || "[]"
+    );
+
+    function mostrarAnimales() {
+        registros.replaceChildren();
+
+        animales.forEach(function(animal) {
+            const fila = document.createElement("tr");
+
+            [animal.nombre, animal.especie, animal.ubicacion,
+             animal.responsable, animal.estado].forEach(function(valor) {
+                const celda = document.createElement("td");
+                celda.textContent = valor;
+                fila.appendChild(celda);
+            });
+
+            registros.appendChild(fila);
+        });
+
+        total.textContent = "Total de animales: " + animales.length;
+    }
+
+    formulario.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        const animal = {
+            nombre: document.getElementById("nombre").value.trim(),
+            especie: document.getElementById("especie").value,
+            ubicacion: document.getElementById("ubicacion").value.trim(),
+            responsable: document.getElementById("responsable").value.trim(),
+            estado: document.getElementById("estado").value
+        };
+
+        animales.push(animal);
+        localStorage.setItem("animalesRescatados", JSON.stringify(animales));
+
+        mostrarAnimales();
+        formulario.reset();
+        alert("¡Animal registrado correctamente!");
+    });
+
+    mostrarAnimales();
+</script>
 </body>
 </html>
