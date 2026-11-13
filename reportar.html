@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportar animal rescatado</title>
+</head>
+<body>
+
+    <header>
+        <h1>Registro de animales rescatados</h1>
+        <p>Formulario para registrar nuevos casos de rescate.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="reportar.html">Reportar animal</a></li>
+            <li><a href="rescates.html">Lista de rescates</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Formulario de rescate</h2>
+
+            <article>
+                <form action="#" method="post">
+
+                    <label for="nombre">Nombre provisional del animal:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <br><br>
+
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Seleccione una categoría</option>
+                        <option value="perros">Perros</option>
+                        <option value="gatos">Gatos</option>
+                        <option value="fauna-silvestre">Fauna Silvestre</option>
+                    </select>
+
+                    <br><br>
+
+                    <p>Urgencia del rescate:</p>
+
+                    <input type="radio" id="alta" name="urgencia" value="Alta" required>
+                    <label for="alta">Alta</label>
+
+                    <input type="radio" id="media" name="urgencia" value="Media">
+                    <label for="media">Media</label>
+
+                    <input type="radio" id="baja" name="urgencia" value="Baja">
+                    <label for="baja">Baja</label>
+
+                    <br><br>
+
+                    <label for="descripcion">Descripción del estado en que fue encontrado:</label>
+                    <br>
+                    <textarea id="descripcion" name="descripcion" rows="5" cols="40" required></textarea>
+
+                    <br><br>
+
+                    <button type="submit">Registrar rescate</button>
+
+                </form>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>Sistema de Rescate y Adopción Animal - 2026</p>
+    </footer>
+
+</body>
+</html>
