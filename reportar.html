@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reportar animal rescatado</title>
+    <title>Reportar Animal - Sistema de Rescate y Adopción Animal</title>
 </head>
 <body>
 
     <header>
-        <h1>Registro de animales rescatados</h1>
-        <p>Formulario para registrar nuevos casos de rescate.</p>
+        <h1>Sistema de Rescate y Adopción Animal</h1>
+        <p>Registro de nuevos casos de rescate.</p>
     </header>
 
     <nav>
@@ -22,47 +22,47 @@
 
     <main>
         <section>
-            <h2>Formulario de rescate</h2>
+            <h2>Registrar un animal rescatado</h2>
 
             <article>
+                <h3>Formulario de reporte</h3>
+
                 <form action="#" method="post">
+                    <p>
+                        <label for="nombre">Nombre provisional del animal:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </p>
 
-                    <label for="nombre">Nombre provisional del animal:</label>
-                    <input type="text" id="nombre" name="nombre" required>
-
-                    <br><br>
-
-                    <label for="categoria">Categoría:</label>
-                    <select id="categoria" name="categoria" required>
-                        <option value="">Seleccione una categoría</option>
-                        <option value="perros">Perros</option>
-                        <option value="gatos">Gatos</option>
-                        <option value="fauna-silvestre">Fauna Silvestre</option>
-                    </select>
-
-                    <br><br>
+                    <p>
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria" name="categoria">
+                            <option value="perros">Perros</option>
+                            <option value="gatos">Gatos</option>
+                            <option value="fauna-silvestre">Fauna Silvestre</option>
+                        </select>
+                    </p>
 
                     <p>Urgencia del rescate:</p>
 
-                    <input type="radio" id="alta" name="urgencia" value="Alta" required>
-                    <label for="alta">Alta</label>
+                    <p>
+                        <input type="radio" id="alta" name="urgencia" value="alta">
+                        <label for="alta">Alta</label>
 
-                    <input type="radio" id="media" name="urgencia" value="Media">
-                    <label for="media">Media</label>
+                        <input type="radio" id="media" name="urgencia" value="media">
+                        <label for="media">Media</label>
 
-                    <input type="radio" id="baja" name="urgencia" value="Baja">
-                    <label for="baja">Baja</label>
+                        <input type="radio" id="baja" name="urgencia" value="baja">
+                        <label for="baja">Baja</label>
+                    </p>
 
-                    <br><br>
+                    <p>
+                        <label for="descripcion">Descripción del estado del animal:</label>
+                        <textarea id="descripcion" name="descripcion" rows="5" cols="40"></textarea>
+                    </p>
 
-                    <label for="descripcion">Descripción del estado en que fue encontrado:</label>
-                    <br>
-                    <textarea id="descripcion" name="descripcion" rows="5" cols="40" required></textarea>
-
-                    <br><br>
-
-                    <button type="submit">Registrar rescate</button>
-
+                    <p>
+                        <button type="submit">Registrar animal</button>
+                    </p>
                 </form>
             </article>
         </section>
